@@ -8,16 +8,14 @@ import org.junit.runner.Runner;
 
 abstract class MemoizingRequest extends Request {
     private final Lock runnerLock = new ReentrantLock();
-    private volatile Runner runner;
+    private  Runner runner; // fix 3
 
     @Override
     public final Runner getRunner() {
         if (runner == null) {
             runnerLock.lock();
             try {
-                if (runner == null) {
                     runner = createRunner();
-                }
             } finally {
                 runnerLock.unlock();
             }
