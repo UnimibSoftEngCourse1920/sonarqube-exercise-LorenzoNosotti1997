@@ -43,6 +43,7 @@ public class ParallelComputer extends Computer {
                         fService.shutdown();
                         fService.awaitTermination(Long.MAX_VALUE, TimeUnit.NANOSECONDS);
                     } catch (InterruptedException e) {
+                        Thread.currentThread().interrupt();// fix 2
                         e.printStackTrace(System.err);
                     }
                 }
