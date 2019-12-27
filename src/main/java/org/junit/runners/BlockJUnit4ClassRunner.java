@@ -399,7 +399,7 @@ public class BlockJUnit4ClassRunner extends ParentRunner<FrameworkMethod> {
         try {
             List<TestRule> testRules = getTestRules(target);
             for (MethodRule each : rules(target)) {
-                if (!(each instanceof TestRule && testRules.contains(each))) {
+                if (!(each instanceof TestRule)) {// fix 5
                     ruleContainer.add(each);
                 }
             }
